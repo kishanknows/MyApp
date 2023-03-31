@@ -3,7 +3,7 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import type {PropsWithChildren} from 'react';
 import type {ViewStyle, TextStyle, StyleProp} from 'react-native';
 
-import {colors} from './theme';
+import {colors} from '../theme';
 
 type MyButtonProps = PropsWithChildren<{
   backgroundStyle?: StyleProp<ViewStyle>;
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     elevation: 10,
     borderRadius: 10,
+    margin: 10,
   },
   text: {
     color: 'white',

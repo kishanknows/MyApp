@@ -1,12 +1,20 @@
-import {Text, View} from 'react-native';
-import MyButton from './src/my-button';
+import {StyleSheet, Text, View} from 'react-native';
+import MyButton from './src/components/my-button';
+import Weather from './src/components/weather';
 
 const App = (): JSX.Element => {
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <View style={styles.container}>
+      <Weather />
       <MyButton onPress={() => {}} />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 export default App;
