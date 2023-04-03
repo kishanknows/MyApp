@@ -33,7 +33,7 @@ const SearchInput = (props: SearchInputProps): JSX.Element => {
   );
 };
 
-const Weather = (): JSX.Element => {
+const WeatherScreen = (): JSX.Element => {
   const [weatherData, setWeatherData] = useState<weatherDataType>();
   return (
     <View>
@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 10,
     borderRadius: 40,
+    borderWidth: 0.5,
   },
   searchInputText: {
     flex: 1,
@@ -135,4 +136,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Weather;
+export default WeatherScreen;
