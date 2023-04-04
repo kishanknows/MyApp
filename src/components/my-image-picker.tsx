@@ -2,14 +2,13 @@ import {TouchableOpacity, StyleSheet} from 'react-native';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {colors} from '../theme';
-import {UserInfo} from './profile';
-
+import {UserInfoType} from '../utils';
 type MyImagePickerProps = {
-  userInfo: UserInfo;
-  setUserInfo: (value: UserInfo) => void;
+  userInfo: UserInfoType;
+  setUserInfo: (value: UserInfoType) => void;
 };
 
-const MyImagePicker = (props: MyImagePickerProps): JSX.Element => {
+export const MyImagePicker = (props: MyImagePickerProps): JSX.Element => {
   const selectImage = async () => {
     try {
       const result = await launchImageLibrary({
@@ -46,5 +45,3 @@ const styles = StyleSheet.create({
     right: 1,
   },
 });
-
-export default MyImagePicker;

@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {colors} from '../theme';
 
 type MyListProps = {
@@ -7,21 +7,24 @@ type MyListProps = {
 
 type ItemProps = {
   name: string;
+  onPress?: () => void;
 };
 
 const Item = (props: ItemProps): JSX.Element => {
   return (
-    <View style={styles.itemView}>
+    <TouchableOpacity style={styles.itemView} onPress={props.onPress}>
       <Text style={styles.itemText}>{props.name}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
-const MyList = (props: MyListProps): JSX.Element => {
+export const MyList = (props: MyListProps): JSX.Element => {
   return (
     <FlatList
       data={props.data}
-      renderItem={({item}): JSX.Element => <Item name={item.name} />}
+      renderItem={({item}): JSX.Element => (
+        <Item name={item.name} onPress={item.onPress} />
+      )}
     />
   );
 };
@@ -29,14 +32,14 @@ const MyList = (props: MyListProps): JSX.Element => {
 const styles = StyleSheet.create({
   itemView: {
     padding: 20,
-    backgroundColor: colors.primary_dark,
-    margin: 2,
-    borderRadius: 5,
+    backgroundColor: colors.primary_light,
+    marginHorizontal: 10,
+    marginVertical: 5,
+    borderRadius: 10,
   },
   itemText: {
-    color: 'white',
-    fontSize: 18,
+    color: 'black',
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
-
-export default MyList;

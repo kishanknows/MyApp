@@ -1,10 +1,10 @@
 import {useState} from 'react';
-import {StyleSheet, TextInput, View} from 'react-native';
+import {StyleSheet, TextInput, View, Image, Text} from 'react-native';
+import MapView, {Marker} from 'react-native-maps';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
+
 import {colors} from '../theme';
-import {getWeather, weatherDataType} from '../utils/weather-api';
-import {Image} from 'react-native';
-import {Text} from 'react-native';
+import {getWeather, weatherDataType} from '../utils';
 
 type SearchInputProps = {
   setWeatherData: (data: weatherDataType) => void;
@@ -33,10 +33,10 @@ const SearchInput = (props: SearchInputProps): JSX.Element => {
   );
 };
 
-const WeatherScreen = (): JSX.Element => {
+export const WeatherScreen = (): JSX.Element => {
   const [weatherData, setWeatherData] = useState<weatherDataType>();
   return (
-    <View>
+    <View style={{flex: 1}}>
       <SearchInput setWeatherData={setWeatherData} />
       {weatherData ? (
         <View style={styles.weatherView}>
@@ -82,6 +82,44 @@ const WeatherScreen = (): JSX.Element => {
           </View>
         </View>
       ) : null}
+      <View
+        style={{
+          flex: 1,
+        }}>
+        <MapView
+          region={{
+            latitude: weatherData?.latitude ? weatherData?.latitude : 37.78825,
+            longitude: weatherData?.longitude
+              ? weatherData?.longitude
+              : -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+          style={styles.map}
+          initialRegion={{
+            latitude: weatherData?.latitude ? weatherData?.latitude : 37.78825,
+            longitude: weatherData?.longitude
+              ? weatherData?.longitude
+              : -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}>
+          <Marker
+            draggable
+            coordinate={{
+              latitude: weatherData?.latitude
+                ? weatherData?.latitude
+                : 37.78825,
+              longitude: weatherData?.longitude
+                ? weatherData?.longitude
+                : -122.4324,
+            }}
+            onDragEnd={e => alert(JSON.stringify(e.nativeEvent.coordinate))}
+            title={'Test Marker'}
+            description={'This is a description of the marker'}
+          />
+        </MapView>
+      </View>
     </View>
   );
 };
@@ -134,6 +172,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '500',
   },
+  map: {
+    width: '100%',
+    height: '100%',
+  },
 });
-
-export default WeatherScreen;

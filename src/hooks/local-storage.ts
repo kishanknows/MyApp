@@ -1,5 +1,5 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useEffect, useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const storeData = async <S>(key: string, value: S) => {
   try {
@@ -19,7 +19,10 @@ const getData = async (key: string) => {
   }
 };
 
-const useLocalStorage = <S>(key: string, value: S): [S, (value: S) => void] => {
+export const useLocalStorage = <S>(
+  key: string,
+  value: S,
+): [S, (value: S) => void] => {
   const [getter, setGetter] = useState<S>(value);
   const setter = (value: S) => {
     setGetter(value);
@@ -32,5 +35,3 @@ const useLocalStorage = <S>(key: string, value: S): [S, (value: S) => void] => {
   }, []);
   return [getter, setter];
 };
-
-export default useLocalStorage;

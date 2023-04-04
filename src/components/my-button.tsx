@@ -12,7 +12,7 @@ type MyButtonProps = PropsWithChildren<{
   onPress: () => void;
 }>;
 
-const MyButton = (props: MyButtonProps): JSX.Element => {
+export const MyButton = (props: MyButtonProps): JSX.Element => {
   return (
     <TouchableOpacity
       onPress={props.onPress}
@@ -40,5 +40,3 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
 });
-
-export default MyButton;

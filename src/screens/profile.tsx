@@ -9,22 +9,13 @@ import {
   Pressable,
 } from 'react-native';
 import Ionicon from 'react-native-vector-icons/Ionicons';
-import useLocalStorage from '../hooks/local-storage';
-import MyImagePicker from './my-image-picker';
-import {useState} from 'react';
 
-export type UserInfo = {
-  username: string;
-  bio: string;
-  image_url: string;
-};
+import {MyImagePicker} from '../components';
+import {useContext, useState} from 'react';
+import {UserContext} from '../utils';
 
-const ProfileScreen = (): JSX.Element => {
-  const [userInfo, setUserInfo] = useLocalStorage<UserInfo>('@user', {
-    username: 'user',
-    bio: 'Hey there!',
-    image_url: '',
-  });
+export const ProfileScreen = (): JSX.Element => {
+  const {userInfo, setUserInfo} = useContext(UserContext);
   const [modalShown, setModalShown] = useState<boolean>(false);
   const [usernameField, setUsernameField] = useState<string>(userInfo.username);
   const [userBioField, setUserBioField] = useState<string>(userInfo.bio);
@@ -167,4 +158,3 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 });
-export default ProfileScreen;

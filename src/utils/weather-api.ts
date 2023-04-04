@@ -10,9 +10,11 @@ export type weatherDataType = {
   wind_speed: number;
   temp: number;
   icon_url: string;
+  latitude: number;
+  longitude: number;
 };
 
-const geoCodeAPI = async (city: string) => {
+export const geoCodeAPI = async (city: string) => {
   try {
     const response = await axios({
       method: 'get',
@@ -30,7 +32,7 @@ const geoCodeAPI = async (city: string) => {
   }
 };
 
-const weatherAPI = async (lat: number, lon: number) => {
+export const weatherAPI = async (lat: number, lon: number) => {
   try {
     const response = await axios({
       method: 'get',
@@ -59,6 +61,8 @@ const getWeatherData = (data: any) => {
     wind_speed: data.wind.speed,
     temp: data.main.temp,
     icon_url: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
+    latitude: data.coord.lat,
+    longitude: data.coord.lon,
   };
 };
 export const getWeather = async (city: string) => {
