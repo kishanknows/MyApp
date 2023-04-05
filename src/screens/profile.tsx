@@ -145,6 +145,7 @@ const styles = StyleSheet.create({
   },
   avatarBackground: {
     backgroundColor: 'black',
+    justifyContent: 'center',
     borderRadius: 20,
     padding: 10,
     marginBottom: 20,

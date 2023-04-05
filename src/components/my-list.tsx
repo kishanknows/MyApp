@@ -7,6 +7,7 @@ type MyListProps = {
 
 type ItemProps = {
   name: string;
+  description: string;
   onPress?: () => void;
 };
 
@@ -14,6 +15,7 @@ const Item = (props: ItemProps): JSX.Element => {
   return (
     <TouchableOpacity style={styles.itemView} onPress={props.onPress}>
       <Text style={styles.itemText}>{props.name}</Text>
+      <Text style={styles.itemDescription}>{props.description}</Text>
     </TouchableOpacity>
   );
 };
@@ -23,7 +25,11 @@ export const MyList = (props: MyListProps): JSX.Element => {
     <FlatList
       data={props.data}
       renderItem={({item}): JSX.Element => (
-        <Item name={item.name} onPress={item.onPress} />
+        <Item
+          name={item.name}
+          onPress={item.onPress}
+          description={item.description}
+        />
       )}
     />
   );
@@ -41,5 +47,8 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 16,
     fontWeight: '600',
+  },
+  itemDescription: {
+    fontSize: 14,
   },
 });

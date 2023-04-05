@@ -105,7 +105,6 @@ export const WeatherScreen = (): JSX.Element => {
             longitudeDelta: 0.0421,
           }}>
           <Marker
-            draggable
             coordinate={{
               latitude: weatherData?.latitude
                 ? weatherData?.latitude
@@ -114,9 +113,6 @@ export const WeatherScreen = (): JSX.Element => {
                 ? weatherData?.longitude
                 : -122.4324,
             }}
-            onDragEnd={e => alert(JSON.stringify(e.nativeEvent.coordinate))}
-            title={'Test Marker'}
-            description={'This is a description of the marker'}
           />
         </MapView>
       </View>
@@ -156,7 +152,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary_light,
     borderRadius: 20,
     padding: 10,
-    margin: 10,
+    marginHorizontal: 10,
+    marginBottom: 10,
   },
   locationText: {
     fontSize: 20,

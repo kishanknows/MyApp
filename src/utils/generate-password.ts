@@ -1,6 +1,6 @@
 export const generatePassword = (
   length: number,
-  complexity: 'weak' | 'fair' | 'strong' | 'very strong',
+  complexity: number,
 ): string => {
   const chars = [
     'abcdefghijklmnopqrstuvwxyz',
@@ -8,16 +8,12 @@ export const generatePassword = (
     'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
     '!@#$%^&*()',
   ];
-  const map = {
-    weak: 1,
-    fair: 2,
-    strong: 3,
-    'very strong': 4,
-  };
   let password = '';
+
   for (let i = 0; i < length; i++) {
-    const caseType = chars[Math.floor(Math.random() * map[complexity])];
+    const caseType = chars[Math.floor(Math.random() * (complexity + 1))];
     password += caseType[Math.floor(Math.random() * caseType.length)];
   }
+
   return password;
 };
