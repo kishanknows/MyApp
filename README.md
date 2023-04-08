@@ -1,5 +1,7 @@
 # weathering
-a weather app built using react native. The app uses openWeatherMap's geocoding and weather api to fetch results based on the input given by the user. Google maps api is used to fetch the location of the weather data provided.
+a weather app built using react native. The app uses openWeatherMap's geocoding and weather api to fetch results based on the input given by the user. Google maps api is used to fetch the location of the weather data provided.<br>
+<br>put your openWeatherMap api key here: https://github.com/kishanknows/weathering/blob/7646e98b8918ece8411692ec8696c2d69090edfe/src/utils/config.ts#L3
+<br><br>put your googleMap api key here: https://github.com/kishanknows/weathering/blob/7646e98b8918ece8411692ec8696c2d69090edfe/android/app/src/main/AndroidManifest.xml#L14
 <p>
   <img src="https://user-images.githubusercontent.com/105078380/230224083-2eae048d-9555-48a3-9553-e21d24709d44.jpg" width="24%" />
   <img src="https://user-images.githubusercontent.com/105078380/230224148-c988e6bb-5dfa-4e53-bd33-c6e22ba54950.jpg" width="24%" /> 
